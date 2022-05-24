@@ -13,3 +13,5 @@ export function media (a, b ,c){
 export function temperatura (febre){
     return febre > 38;
 }
+
+    export function corprimaria(cor)
