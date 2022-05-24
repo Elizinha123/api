@@ -10,6 +10,6 @@ export function media (a, b ,c){
   return ( a + b + c ) / 3;
 }
 
-export function temperatura (a){
-    return a > 38;
+export function temperatura (febre){
+    return febre > 38;
 }
