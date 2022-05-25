@@ -72,18 +72,61 @@ server.post('/media', (req, resp) => {
 
 })
 
-server.get('/temperatura', (req, resp) => {
-    try {
-        const { valores: { febre } } = req.query;
-        const x = (temperatura(febre));
+server.get('/febre', (req,resp) =>{
+    try{
+        const febril= Number(req.query.a);
+
+        const resposta= temperatura(febril);
 
         resp.send({
-            temperatura: x
+            febril: resposta
+        });
+
+    }catch(err){
+        resp.status(404).send({
+            erro:err.message
         })
     }
-    catch (err) {
-            resp.status(404).send({
-                erro: err.message
-            })
-        }
+})
+
+
+server.get('/tabuada', (req, resp)=>{
+    try{
+    const tabu= Number(req.query.a);
+
+    const resposta= tabuada(tabu);
+
+    resp.send({
+      tabuada: resposta
     })
+} catch(err){
+    resp.status(404).send({
+        erro: err.message
+    })
+}
+} )
+
+export function corprimaria(cor){
+    let resposta= false;
+    if(cor=="amarelo"||cor=="azul"|| cor=="vermelho" ){
+        resposta=true;
+    }
+    })
+
+    return resposta;
+}
+    server.post('/dia2/ingressocinema', (req,resp)=>{
+        try{
+            const { inginteiro, ingmeia, semana, nacionalidade} = req.body;
+            const total = ingressocinema(inginteiro, ingmeia, semana, nacionalidade);
+            resp.send({
+                total: total
+            })
+    } catch(err){
+        resp.status(404).send({
+            erro: err.message
+        })
+    }
+    })
+
+    export default server;
